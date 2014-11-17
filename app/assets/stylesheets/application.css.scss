@@ -1,0 +1,28 @@
+ @import "bootstrap";
+
+
+body {
+  background: url(image_path('pinkfocus.jpg')) no-repeat top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #0a0a0a !important
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background: #17253e;
+  border-radius: 50%;
+  border:4px double #ccc;
+  line-height:100px;
+  text-align:center;
+  color: #ccc;
+}
+
+.circle:hover
+  {color:#17253e;
+    text-decoration:none;
+    background:#c48fba;
+    font-size: 1.3em;}
