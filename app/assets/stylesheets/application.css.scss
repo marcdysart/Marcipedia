@@ -19,6 +19,10 @@ body {
   line-height:100px;
   text-align:center;
   color: #ccc;
+  -webkit-transition: all 2s ease, -webkit-transform 2s;
+  -moz-transition: all 2s ease;
+  -o-transition: all 2s ease;
+  transition: all 2s ease;
 }
 
 .circle:hover
