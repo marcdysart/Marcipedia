@@ -10,8 +10,14 @@ has_many :wikis, dependent: :destroy
      role == 'admin'
    end
 
-   def moderator?
-     role == 'moderator'
+   def standard?
+     role == 'standard'
    end
+
+   def premium?
+     role == 'premium'
+   end
+
+
 
 end

@@ -25,31 +25,34 @@ users = User.all
 # Create an admin user
  admin = User.new(
    name:     'Admin User',
-   email:    'admin@example.com',
+   email:    'admin1@example.com',
    password: 'helloworld',
+   role: 'admin'
 
  )
  admin.skip_confirmation!
  admin.save!
 
  # Create a moderator
- moderator = User.new(
-   name:     'Moderator User',
-   email:    'moderator@example.com',
+ standard = User.new(
+   name:     'Standard User',
+   email:    'standard@example.com',
    password: 'helloworld',
-   
+   role: 'standard'
+
  )
- moderator.skip_confirmation!
- moderator.save!
+ standard.skip_confirmation!
+ standard.save!
 
  # Create a member
- member = User.new(
-   name:     'Member User',
-   email:    'member@example.com',
+ premium = User.new(
+   name:     'Premium User',
+   email:    'premium@example.com',
    password: 'helloworld',
+   role: 'premium'
  )
- member.skip_confirmation!
- member.save!
+ premium.skip_confirmation!
+ premium.save!
 
 
  puts "Seed finished"
