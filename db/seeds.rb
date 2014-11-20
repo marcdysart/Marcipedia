@@ -27,7 +27,7 @@ users = User.all
    name:     'Admin User',
    email:    'admin@example.com',
    password: 'helloworld',
-   role:     'admin'
+
  )
  admin.skip_confirmation!
  admin.save!
@@ -37,7 +37,7 @@ users = User.all
    name:     'Moderator User',
    email:    'moderator@example.com',
    password: 'helloworld',
-   role:     'moderator'
+   
  )
  moderator.skip_confirmation!
  moderator.save!
