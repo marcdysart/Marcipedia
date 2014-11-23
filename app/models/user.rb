@@ -9,7 +9,7 @@ has_many :wikis, dependent: :destroy
 after_initialize :init
 
 def init
-  self.role = 'standard'
+  self.role ||= 'standard'
 end
 
    def admin?

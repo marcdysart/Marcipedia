@@ -1,6 +1,7 @@
 class ChargesController < ApplicationController
   def create
    amount = Amount.new
+
    # Creates a Stripe Customer object, for associating
    # with the charge
    customer = Stripe::Customer.create(
@@ -12,12 +13,13 @@ class ChargesController < ApplicationController
    charge = Stripe::Charge.create(
      customer: customer.id, # Note -- this is NOT the user_id in your app
      amount: amount.default,
-     description: "BigMoney Membership - #{current_user.email}",
+     description: "Marcipedia Premium Membership - #{current_user.email}",
      currency: 'usd'
    )
 
    flash[:success] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
-   redirect_to user_path(current_user) # or wherever
+   current_user.update_attributes(role: 'premium')
+   redirect_to edit_user_registration_path
 
  # Stripe will send back CardErrors, with friendly messages
  # when something goes wrong.
@@ -28,11 +30,11 @@ class ChargesController < ApplicationController
  end
 
 def new
-   @amount = Amount.new
+   amount = Amount.new
    @stripe_btn_data = {
      key: "#{ Rails.configuration.stripe[:publishable_key] }",
-     description: "BigMoney Membership - #{current_user.name}",
-     amount: @amount.default
+     description: "Marcipedia Premium Membership - #{current_user.name}",
+     amount: amount.default
    }
  end
 

@@ -1,14 +1,20 @@
 
 <br/>
 
-
+ <% a=Amount.new %>
 
  <div class="jumbotron welcome-image text-center">
-   <h1>Marcipedia Upgrade Today</h1>
+   <h1>Upgrade Today for only $<%= a.default/100 %> </h1>
    <p>Marcipedia Premium Users can private Markdown-based wikis and choose colaborators<p>
+   <p> At the moment you are a <%=current_user.role %> user <p>
 
+
+  <% if current_user.role=='standard' %>
+   <h4> Upgrade using any credit card </h4>
    <%= form_tag charges_path do %>
+     <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description="<%= @stripe_btn_data[:description] %>" ></script>
 
-     <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description=="<%= @stripe_btn_data[:description] %>" ></script>
+
+   <% end %>
    <% end %>
  </div>
