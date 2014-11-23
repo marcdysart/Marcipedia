@@ -1,4 +1,14 @@
- <%= form_tag charges_path do %>
-   <h4>Click the button!</h4>
-   <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description=="<%= @stripe_btn_data[:description] %>" ></script>
- <% end %>
+
+<br/>
+
+
+
+ <div class="jumbotron welcome-image text-center">
+   <h1>Marcipedia Upgrade Today</h1>
+   <p>Marcipedia Premium Users can private Markdown-based wikis and choose colaborators<p>
+
+   <%= form_tag charges_path do %>
+
+     <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description=="<%= @stripe_btn_data[:description] %>" ></script>
+   <% end %>
+ </div>
