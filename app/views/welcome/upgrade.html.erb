@@ -8,7 +8,9 @@
       <% if current_user.role == 'premium' %>
          <h2>Change your plan today for free </h2>
          <p>Marcipedia Standard Users can make public Markdown-based wikis<p>
-
+        <%= link_to edit_user_registration_path, class: 'btn btn-success' do %>
+          Change my account to standard plan
+        <% end %>
       <% else %>
          <h1>Thanks for your support</h1>
          <p> Would you like to upgrade to the <%= link_to 'Premium Account', new_charge_path %>? </p>
