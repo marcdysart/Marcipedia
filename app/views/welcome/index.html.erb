@@ -11,16 +11,21 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 text-center">
+
     <%= link_to new_charge_path do %>
-    <h2><span class="glyphicon glyphicon-usd circle" aria-hidden="true"></span> Premium Plan</h2>
+    <h2>Premium Plan</h2>
+    <h2><span class="glyphicon glyphicon-usd circle" aria-hidden="true"></span></h2>
     <% end %>
 
-    <p>Create private wikis!</p>
-    <%= link_to "Upgrade Today", new_charge_path, class: 'btn btn-primary' %>
+    <p>Create private wikis! Upgrade Today!</p>
   </div>
-  <div class="col-md-6">
-    <h2><span class="glyphicon glyphicon-tower circle" aria-hidden="true"></span> Free Plan</h2>
+  <div class="col-md-6 text-center">
+    <%= link_to charge_path(:id) do %>
+    <h2> Free Plan </h2>
+    <h2><span class="glyphicon glyphicon-tower circle" aria-hidden="true"></span></h2>
+    <% end %>
     <p>Create as many public wikis as you want!</p>
+
   </div>
 </div>

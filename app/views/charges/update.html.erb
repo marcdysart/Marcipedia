@@ -1,0 +1,26 @@
+<br/>
+
+
+
+ <div class="jumbotron welcome-image text-center">
+   <% if current_user %>
+    <h1> At the moment you are a <%=current_user.role %> user <h1>
+    <% if current_user.role = 'premium' %>
+       <h1>Change your plan Today for only free </h1>
+       <p>Marcipedia Standard Users can make public Markdown-based wikis<p>
+
+         <% else %>
+         <h1> You are already a Standard User.  Thanks for your support </h1>
+         <p> Would you like to upgrade to the <%= link_to Premium Account, new_charge_path %>? </p>
+         <% end %>
+        <p>
+            <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or
+            <%= link_to "Sign Up", new_user_registration_path , class: 'btn btn-primary' %> today!
+        </p>
+
+   <% else %>
+   <h1>You have not logged in.  Create a new account!</h1>
+
+
+   <% end %>
+ </div>
