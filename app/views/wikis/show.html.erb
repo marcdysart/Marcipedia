@@ -1,4 +1,6 @@
-<h1><%= @wiki.title %></h1>
+<h1><%= @wiki.title %> </h1>
+<p>by <%= @wiki.user.name %></p>
+
   <% if policy(Wiki.new).edit? %>
     <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
   <% end %>

@@ -12,18 +12,9 @@ def init
   self.role ||= 'standard'
 end
 
-   def admin?
-     role == 'admin'
+   def role?(a)
+     a == self.role
    end
-
-   def standard?
-     role == 'standard'
-   end
-
-   def premium?
-     role == 'premium'
-   end
-
 
 
 end

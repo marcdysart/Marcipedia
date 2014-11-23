@@ -36,7 +36,7 @@
 <h3>Current Plan</h3>
 
 <p> Your current plan is <%= current_user.role %> </p>
-<% if current_user.role=='standard' %>
+<% if current_user.role?('standard') %>
     <div class="actions">
 
       <%= link_to "Upgrade my account", new_charge_path, class: 'btn btn-success' %>
@@ -45,7 +45,7 @@
     <% else %>
     <div class="actions">
 
-      <%= link_to edit_user_registration_path, class: 'btn btn-success' do %>
+      <%= link_to edit_user_registration_path, class: 'btn btn-success', data: { confirm: 'Are you sure you want to change your plan to Standard?' } do %>
         Change my account to standard plan
         <% current_user.update_attributes(role: 'standard') %>
       <% end %>
