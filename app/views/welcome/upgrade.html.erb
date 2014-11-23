@@ -1,9 +1,26 @@
 <br/>
-<div class="jumbotron welcome-image text-center">
-  <h1>Marcipedia Upgrade Today</h1>
-  <p>Marcipedia Premium Users can private Markdown-based wikis and choose colaborators<p>
-  <p>
-      <%= link_to "Upgrade", "#", class: 'btn btn-primary' %>
 
-  </p>
-</div>
+
+
+ <div class="jumbotron welcome-image text-center">
+   <% if current_user %>
+    <h2> At the moment you are a <%=current_user.role %> user. <h2>
+      <% if current_user.role == 'premium' %>
+         <h2>Change your plan today for free </h2>
+         <p>Marcipedia Standard Users can make public Markdown-based wikis<p>
+
+      <% else %>
+         <h1>Thanks for your support</h1>
+         <p> Would you like to upgrade to the <%= link_to 'Premium Account', new_charge_path %>? </p>
+      <% end %>
+
+
+   <% else %>
+      <h2>Marcipedia allows users to create public wikis that all members can collaborate and can be viewed by the public</h2>
+      <h2>You have not logged in.  If you haven't already, create a new account!</h2>
+      <p>
+          <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or
+          <%= link_to "Sign Up", new_user_registration_path , class: 'btn btn-primary' %> today!
+      </p>
+   <% end %>
+ </div>
