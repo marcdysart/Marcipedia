@@ -29,6 +29,18 @@ class ChargesController < ApplicationController
    redirect_to new_charge_path
  end
 
+
+def destroy
+
+  if current_user.update_attributes(role: 'standard')
+    flash[:success] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
+    redirect_to edit_user_registration_path
+  else
+    flash[:error] = "We couldnt downgrade you"
+    redirect_to edit_user_registration_path
+  end
+end
+
 def new
    amount = Amount.new
    @stripe_btn_data = {
