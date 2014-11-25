@@ -7,4 +7,8 @@ module ApplicationHelper
     (redcarpet.render text).html_safe
   end
 
+      def my_name
+      :'Marc Dysart'
+    end
+
 end
