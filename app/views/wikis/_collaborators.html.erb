@@ -1,0 +1,15 @@
+<%=@users.count %>
+<% @users.each do |user|  %>
+
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%=  user.name %>
+        <small>
+          select to be a collaborator.
+          <br/>
+        </small>
+      </h4>
+    </div>
+  </div>
+  <% end %>
