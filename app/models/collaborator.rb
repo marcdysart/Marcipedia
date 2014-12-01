@@ -1,3 +1,10 @@
 class Collaborator < ActiveRecord::Base
-  delegate :user, :wiki, to: :collaborator
+  belongs_to :user
+  belongs_to :wiki
+
+
+  # def include?(user)
+  #    self.collaborator << user
+  # end
+
 end

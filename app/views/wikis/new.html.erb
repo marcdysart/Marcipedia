@@ -1,5 +1,5 @@
  <h1>New Wiki</h1>
- <% @user=User.all %>
+
  <div class="row">
    <div class="col-md-4">
      <p>Guidelines for Wikis</p>
@@ -13,5 +13,6 @@
        <%= render  partial: 'form', locals: {wiki: @wiki} %>
     </div>
  </div>
-
+<% if @wiki.private %>
  <%= render partial: 'wikis/collaborators' %>
+<% end %>

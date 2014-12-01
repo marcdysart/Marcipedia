@@ -13,3 +13,7 @@
       <%= render  partial: 'form', locals: {wiki: @wiki} %>
    </div>
  </div>
+
+ <% if @wiki.private %>
+  <%= render partial: 'wikis/collaborators' %>
+ <% end %>
