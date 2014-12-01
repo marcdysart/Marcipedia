@@ -1,25 +1,36 @@
-
-
-
-
   <div>
     <table class="table table-hover table-bordered collaborator" align="center">
       <h1 class = "text-center">Collaborators</h1>
-      <h2 class = "text-center">Choose users who have permission to edit this private wiki.</h2>
+      <h3 class = "text-center">Choose users who have permission to edit this private wiki.</h3>
 
       <thead>
         <tr>
           <th >Users</th>
+          <th >User ID </th>
           <th >Collaborator</th>
         </tr>
       </thead>
       <tbody>
         <% @users.each do |user|  %>
-        <%= content_tag :tr, class: 'media', id: "colaborator" do %>
+          <%= form_for [@wiki] do |f| %>
+            <%= content_tag :tr, class: 'media', id: "collaborator" do %>
 
-        <td>  <%=  user.name %> </td>
-        <td>  select  </td>
-        <% end %>
+            <td>  <%=  user.name %> </td>
+
+            <td> <%= f.hidden_field :user_id, :value => user.id %> </td>
+
+            <% if @wiki.users.include?(user) %>
+              <td>  Yes </td>
+            <% else %>
+              <td>
+                <div class="form-group">
+                  <%= f.submit "Add as collaborator", class: 'btn'  %>
+                </div>
+              </td>
+            <% end %>
+
+            <% end %>
+          <% end %>
         <% end %>
       </tbody>
     </table>
