@@ -1,0 +1,23 @@
+%br/
+.jumbotron.welcome-image.text-center
+  %h1 Marcipedia
+  %p Marcipedia allows users to create public and private Markdown-based wikis
+  - unless current_user
+    %p
+      = link_to "Sign In", new_user_session_path, class: 'btn btn-primary'
+      or
+      \#{link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary'} today!
+.row
+  .col-md-6.text-center
+    = link_to new_charge_path do
+      %h2 Premium Plan
+      %h2
+        %span.glyphicon.glyphicon-usd.circle{"aria-hidden"=>"true"}
+    %pCreate private wikis! Upgrade Today!
+
+  .col-md-6.text-center
+    = link_to upgrade_path do
+      %h2 Free Plan
+      %h2
+        %span.glyphicon.glyphicon-tower.circle{"aria-hidden"=>"true"}
+    %pCreate as many public wikis as you want!
