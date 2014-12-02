@@ -1,21 +1,40 @@
 <%= form_for wiki do |f| %>
   <div class="form-group">
     <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control', placeholder: "Enter post title" %>
+    <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
   </div>
-  <% if current_user.role?('admin') || current_user.role?('premium') %>
-    <div class="form-group">
-        <%= f.label :private, class: 'checkbox' do %>
-          <%= f.check_box :private %> Private wiki
-        <% end %>
-    </div>
-  <% end %>
+
 
   <div class="form-group">
     <%= f.label :body %>
-    <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter post body" %>
+
+    <div id="epiceditor" class="form-group"> </div>
+    <%= f.text_area :body, rows: 12, id: "epictextarea", class: 'form-control hide', placeholder: "Enter Wiki Here" %>
+
   </div>
+
+  <% if current_user.role?('admin') || current_user.role?('premium') %>
+  <div class="form-group">
+    <%= f.label :private, class: 'checkbox' do %>
+    <%= f.check_box :private %> Private wiki
+    <% end %>
+  </div>
+  <% end %>
+
+
   <div class="form-group">
     <%= f.submit "Save", class: 'btn btn-success' %>
   </div>
+
+
 <% end %>
+
+
+<script src="epiceditor.min.js"></script>
+<script>
+var editor = new EpicEditor().load();
+editor.getElement('editor').body.innerHTML = '<%= escape_javascript(@wiki.body) %>';
+function prep() {
+  $("#body")[0].value = (editor.getElement('editor').body.innerHTML);
+}
+</script>
