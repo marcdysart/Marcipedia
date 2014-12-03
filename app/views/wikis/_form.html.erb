@@ -26,15 +26,41 @@
     <%= f.submit "Save", class: 'btn btn-success' %>
   </div>
 
+  <!-- List of Collaborators -->
+
+  <table class="table table-hover table-bordered collaborator" align="center">
+    <h1 class = "text-center">Collaborators</h1>
+    <h3 class = "text-center">Choose users who have permission to edit this private wiki: <%= @wiki.title %></h3>
+
+
+    <thead>
+      <tr>
+        <th >Users</th>
+        <th >Collaborator</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= hidden_field_tag :wiki_id, @wiki.id %>
+      <% @users.each do |user|  %>
+        <%= content_tag :tr, class: 'media', id: "collaborator" do %>
+          <td>  <%=  user.name %> </td>
+          <%= hidden_field_tag :user_id, user.id %>
+            <% if @wiki.users.include?(user) %>
+              <td>  Yes </td>
+            <% else %>
+              <td>
+                <div class="form-group">
+                  <%= f.label :user_id, class: "checkbox-#{user.id}" do %>
+                  <%= f.check_box :user_id %>
+                </div>
+              </td>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    </tbody>
+  </table>
+
 
 <% end %>
-
-
-<script src="epiceditor.min.js"></script>
-<script>
-var editor = new EpicEditor().load();
-editor.getElement('editor').body.innerHTML = '<%= escape_javascript(@wiki.body) %>';
-function prep() {
-  $("#body")[0].value = (editor.getElement('editor').body.innerHTML);
-}
-</script>

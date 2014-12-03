@@ -7,10 +7,8 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
 
-  resources :wikis do
-    resources :collaborators
-  end
+  resources :wikis
+  resources :collaborators, only: [:create]
   resources :charges, only: [:new, :create, :destroy]
-  resources :users, only: [:update, :show, :index]
 
 end

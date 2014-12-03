@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require epiceditor
 //= require_tree .
 
@@ -36,7 +35,7 @@ $(function() {
 
   //Everytime it's updated, update the textarea
   editor.on('update', function (file) {
-    $("#spictextarea").val(file.content);
+    $("#epictextarea").val(file.content);
   });
   if( $("#epiceditor").length > 0 ) {
     editor.load();

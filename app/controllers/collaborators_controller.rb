@@ -9,7 +9,10 @@ class CollaboratorsController < ApplicationController
   def create
 
     @wiki = Wiki.find(params[:wiki_id])
-    @collaborator = @wiki.collaborators.build(params[:collaborator])
+    @user = User.find(params[:user_id])
+    @users = User.all
+    # I need to put in a loop for all of the possible collaborators, right?
+    @collaborator = @wiki.collaborators.create(user: @user)
     if @collaborator.save
       flash[:notice] = "Collaborators were added."
 
