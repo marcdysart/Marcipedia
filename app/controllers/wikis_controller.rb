@@ -1,4 +1,5 @@
 class WikisController < ApplicationController
+  before_action :set_wiki, only: [:show, :edit, :update]
   def index
     @wikis = policy_scope(Wiki)
     @users = User.all
@@ -69,5 +70,9 @@ class WikisController < ApplicationController
 
   def wiki_params
     params.require(:wiki).permit(:title, :private, :body, :user_ids => [])
+  end
+
+  def set_wiki
+    @wiki = Wiki.friendly.find(params[:id])
   end
 end

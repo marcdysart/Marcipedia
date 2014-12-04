@@ -1,4 +1,6 @@
 class Wiki < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :history]
   belongs_to :user
   has_many :collaborators, dependent: :destroy
   has_many :users, through: :collaborators
@@ -10,5 +12,10 @@ class Wiki < ActiveRecord::Base
     !self.private
   end
 
+
+
+  # def should_generate_new_friendly_id?
+  #   new_record?
+  # end
 
 end
