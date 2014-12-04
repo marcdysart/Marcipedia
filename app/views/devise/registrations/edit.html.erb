@@ -60,5 +60,11 @@
 
 <p> You have been given permission to collaborate on the following wiki's </p>
 
-
+  <% @wikis.each do |wiki| %>
+    <% wiki.users.first %>
+    <% if wiki.users.include?(current_user) %>
+      <%= markdown link_to wiki.title, wiki %>
+    <% end %>
+  <% end %>
+</br>
 <%= link_to "Back", :back %>

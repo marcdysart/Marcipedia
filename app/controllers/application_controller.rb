@@ -8,10 +8,11 @@ class ApplicationController < ActionController::Base
      redirect_to root_url, alert: exception.message
    end
 
-   
+
    protected
 
    def configure_permitted_parameters
      devise_parameter_sanitizer.for(:sign_up) << :name
+     @wikis = policy_scope(Wiki)
    end
 end

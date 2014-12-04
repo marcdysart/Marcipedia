@@ -1,12 +1,21 @@
 %h1 All The Wikis
 -if policy(Wiki.new).create?
   = link_to "New Wiki", new_wiki_path, class: 'btn btn-success'
-- @wikis.each do |wiki|
-  .media
-    .media-body
+.row
+  .col-md-6
+    - @wikis.each do |wiki|
+      .media
+        .media-body
+          %h4.media-heading
+            = markdown link_to wiki.title, wiki
+            %small created #{time_ago_in_words(wiki.created_at)} ago by #{wiki.user.name}
+            - if wiki.private == true
+              \- Private
+            %br/
+  .col-md-6
+    %h3 You have been given permission to collaborate with the following
+    - @wikis.each do |wiki|
       %h4.media-heading
-        = markdown link_to wiki.title, wiki
-        %small created #{time_ago_in_words(wiki.created_at)} ago by #{wiki.user.name}
-        - if wiki.private == true
-          \- Private
-        %br/
+        - if wiki.users.include?(current_user)
+          = markdown link_to wiki.title, wiki
+          %small created #{time_ago_in_words(wiki.created_at)} ago by #{wiki.user.name}
