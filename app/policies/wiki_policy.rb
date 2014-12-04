@@ -39,7 +39,7 @@
       else # this is the lowly standard user
         all_wikis = scope.all
         wikis = []
-        all_wikkis.each do |wiki|
+        all_wikis.each do |wiki|
           if wiki.public? || wiki.users.include?(user)
             wikis << wiki # only show standard users public wikis and private wikis they are a collaborator on
           end

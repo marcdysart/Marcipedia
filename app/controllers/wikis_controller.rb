@@ -70,6 +70,6 @@ class WikisController < ApplicationController
      private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :private, :body)
+    params.require(:wiki).permit(:title, :private, :body, :user_ids => [])
   end
 end
