@@ -15,14 +15,12 @@ class WikisController < ApplicationController
   def new
       @users = User.all
       @wiki = Wiki.new
-      @collaborators = @wiki.collaborators.build
-      @user = @collaborators.build_user
       authorize @wiki
   end
 
   def create
 
-     @wiki = Wiki.new(wiki_params)
+     @wiki = current_user.wikis.build(wiki_params)
      authorize @wiki
      @users = User.all
      if @wiki.save
