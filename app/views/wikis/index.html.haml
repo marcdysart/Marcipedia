@@ -2,7 +2,7 @@
 -if policy(Wiki.new).create?
   = link_to "New Wiki", new_wiki_path, class: 'btn btn-success'
 .row
-  .col-md-6
+  .col-md-7
     - @wikis.each do |wiki|
       .media
         .media-body
@@ -12,7 +12,7 @@
             - if wiki.private == true
               \- Private
             %br/
-  .col-md-6
+  .col-md-5
     %h3 You have been given permission to collaborate with the following wikis
     - @wikis.each do |wiki|
       %h4.media-heading

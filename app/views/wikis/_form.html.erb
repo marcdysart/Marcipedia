@@ -1,48 +1,62 @@
+
+
 <%= form_for wiki do |f| %>
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
-  </div>
+  <div class= "row">
+    <div class="col-md-8">
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
+      </div>
 
-  <div class="form-group">
-    <%= f.label :body %>
-    <div id="epiceditor" class="form-group"> </div>
-    <%= f.text_area :body, rows: 12, id: "epictextarea", class: 'form-control hide', placeholder: "Enter Wiki Here" %>
-  </div>
-
+      <div class="form-group">
+        <%= f.label :body %>
+        <div id="epiceditor" class="form-group"> </div>
+        <%= f.text_area :body, rows: 12, id: "epictextarea", class: 'form-control hide', placeholder: "Enter Wiki Here" %>
+      </div>
       <% if current_user.role?('admin') || current_user.role?('premium') %>
-        <div class="form-group">
-          <%= f.label :private, class: 'checkbox' do %>
-          <%= f.check_box :private %> Private wiki
-          <% end %>
+      <div class="form-group">
+        <%= f.label :private, class: 'checkbox' do %>
+        <%= f.check_box :private %> Private wiki
+        <% end %>
+      </div>
+      <% end %>
+        <p> <%= f.submit 'Save', class: 'btn btn-info' %>
+
+          <p>Guidelines for Wikis</p>
+          <ul>
+            <li>Remember that the wiki can be public</li>
+            <li>Use Markdown Features</li>
+            <li>The incessant use of hashtags will get you banned.</li>
+          </ul>
+    </div>
+    <div class="col-md-4">
+          <% if current_user.role?('admin') || current_user.role?('premium') %>
+            <table class="table table-hover table-bordered collaborator" align="center">
+              <h1 class = "text-center">Collaborators</h1>
+              <h4 class = "text-center">Choose users who have permission to edit this private wiki</h3>
+
+              <thead>
+                <tr>
+                  <th >Users</th>
+                  <th >Collaborator</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @users.each do |user|  %>
+                    <tr>
+                      <td>  <%=  user.name %> </td>
+                      <td>
+                        <div class="form-group">
+                          <%= check_box_tag "wiki[user_ids][]", user.id, @wiki.users.include?(user) %>
+                        </div>
+                      </td>
+                    </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <p> <%= f.submit 'Save', class: 'btn btn-info' %>
+             <% end %> <!-- if cuurent_user.role .... -->
         </div>
 
-
-
-        <table class="table table-hover table-bordered collaborator" align="center">
-          <h1 class = "text-center">Collaborators</h1>
-          <h3 class = "text-center">Choose users who have permission to edit this private wiki: <%= @wiki.title %></h3>
-
-          <thead>
-            <tr>
-              <th >Users</th>
-              <th >Collaborator</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @users.each do |user|  %>
-                <tr>
-                  <td>  <%=  user.name %> </td>
-                  <td>
-                    <div class="form-group">
-                      <%= check_box_tag "wiki[user_ids][]", user.id, @wiki.users.include?(user) %>
-                    </div>
-                  </td>
-                </tr>
-            <% end %>
-          </tbody>
-        </table>
-         <% end %> <!-- if cuurent_user.role .... -->
-    <p> <%= f.submit 'Save', class: 'btn btn-info' %>
-<% end %>
+  <% end %>
