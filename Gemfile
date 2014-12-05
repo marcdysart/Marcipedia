@@ -56,3 +56,7 @@ gem 'stripe'
 gem 'haml-rails'
 gem 'epic-editor-rails'
 gem 'friendly_id'
+
+group :test do
+  gem 'rspec-rails', '~> 3.1.0'
+end
