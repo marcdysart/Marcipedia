@@ -44,3 +44,19 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'bootstrap-sass', '~> 3.1.1'
+
+gem 'faker'
+gem 'devise'
+gem 'figaro', '1.0'
+gem 'redcarpet'
+gem 'pundit'
+gem 'stripe'
+gem 'haml-rails'
+gem 'epic-editor-rails'
+gem 'friendly_id'
+
+group :test do
+  gem 'rspec-rails', '~> 3.1.0'
+end

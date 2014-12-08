@@ -1,0 +1,45 @@
+ @import "bootstrap";
+
+ .user-info {
+   margin-top: 9px;
+ }
+
+ .nav {
+   margin-top: 5px;
+ }
+
+body {
+  background: url(image_path('pinkfocus.jpg')) no-repeat top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #0a0a0a !important
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background: #17253e;
+  border-radius: 50%;
+  border:4px double #ccc;
+  line-height:100px;
+  text-align:center;
+  color: #ccc;
+  -webkit-transition: all .5s ease, -webkit-transform .5s;
+  -moz-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+.circle:hover
+  {color:#17253e;
+    text-decoration:none;
+    background:#c48fba;
+    font-size: 1.3em;}
+
+
+.collaborator {
+      width: 50%;
+
+    }

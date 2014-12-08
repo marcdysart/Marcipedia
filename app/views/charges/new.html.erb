@@ -1,0 +1,30 @@
+<br/>
+
+ <% a=Amount.new %>
+
+ <% if current_user %>
+
+     <div class="jumbotron welcome-image text-center">
+       <h1>Upgrade Today for only $<%= a.default/100 %> </h1>
+       <p>Marcipedia Premium Users can create private Markdown-based wikis and choose colaborators</p>
+       <p> At the moment you are a <%=current_user.role %> user </p>
+
+      <% if current_user.role?('standard') %>
+       <h4> Upgrade using any credit card </h4>
+         <%= form_tag charges_path do %>
+           <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description="<%= @stripe_btn_data[:description] %>" ></script>
+         <% end %>
+       <% end %>
+     </div>
+
+ <% else %>
+     <div class="jumbotron welcome-image text-center">
+       <h1>For only $<%= a.default/100 %> a month </h1>
+       <p>Marcipedia Premium Users can create private Markdown-based wikis and choose colaborators</p>
+       <p>
+           <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or
+           <%= link_to "Sign Up", new_user_registration_path , class: 'btn btn-primary' %> today!
+       </p>
+
+     </div>
+ <% end %>
